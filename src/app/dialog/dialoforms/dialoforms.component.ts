@@ -9,10 +9,9 @@ import { DialogserviceService } from 'src/app/service/dialogservice.service';
 export class DialoformsComponent implements OnInit {
 
 
-  formscheck = this.dialogservice.getValores()
+  formscheck: string = this.dialogservice.getValores()
 
   constructor(
-    public dialogRef : DialoformsComponent,
      private dialogservice: DialogserviceService
   ) {}
 

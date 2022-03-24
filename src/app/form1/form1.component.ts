@@ -32,7 +32,7 @@ export class Form1Component  {
   ) {}
 
   
- showDialog(): void {
+ startDialog(): void {
 
   this.formscheck.setValores(`
   Nome: ${this.name},
@@ -48,7 +48,7 @@ export class Form1Component  {
   `)
 
 const dialogRef = this.dialog.open(DialoformsComponent, {
-  width: '350px', height: '400px'
+  width: '350px', height: '400px',
 });
 dialogRef.afterClosed().subscribe(result => {
   console.log('formulario enviado');

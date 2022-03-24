@@ -5,7 +5,7 @@
       <mat-card-title>Cadastre-se!</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form action="#" id="main-form" (ngSubmit)="showDialog()" [formGroup]="personalData">
+      <form action="#" id="main-form2" (ngSubmit)="showDialog()" [formGroup]="personalData">
 
         <div class="form-row">
           <mat-form-field appearance="fill">
@@ -16,6 +16,14 @@
               placeholder="Seu nome..."
               formControlName="name"
                >
+               <mat-error>
+                <span *ngIf="personalData.controls['name'].getError('required')">
+                  Este campo é obrigatório
+                </span>
+                <span *ngIf="personalData.controls['name'].getError('minlength')">
+                  Este campo é obrigatório
+                </span>
+              </mat-error>
            
           </mat-form-field>
 
@@ -26,6 +34,9 @@
               <span *ngIf="personalData.controls['lastname'].getError('required')">
                 Este campo é obrigatório
               </span>
+              <span *ngIf="personalData.controls['lastname'].getError('minlength')">
+                Este campo é obrigatório
+              </span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -33,11 +44,15 @@
         <div class="form-row col">
           <mat-form-field appearance="fill" class="grow">
             <mat-label>CPF</mat-label>
-            <input type="text" matInput placeholder="000.000.000-00" autocomplete="false" formControlName="cpf">
+            <input type="text" matInput placeholder="000.000.000-00" autocomplete="false"[pattern]="cpfpattern" formControlName="cpf">
             <mat-error>
               <span *ngIf="personalData.controls['cpf'].getError('required')">
                 Este campo é obrigatório
               </span>
+              <span *ngIf="personalData.controls['cpf'].getError('pattern')">
+                Este campo é obrigatório
+              </span>
+             
             </mat-error>
             </mat-form-field>
         </div>
@@ -45,9 +60,12 @@
         <div class="form-row col">
           <mat-form-field appearance="fill" class="grow">
             <mat-label>Telefone</mat-label>
-            <input type="text" matInput placeholder=" DDDtelefone" autocomplete="false" formControlName="telefone">
+            <input type="text" matInput placeholder=" DDDtelefone" [pattern]="telefonepattern"tocomplete="false" formControlName="telefone">
             <mat-error>
               <span *ngIf="personalData.controls['telefone'].getError('required')">
+                Este campo é obrigatório
+              </span>
+              <span *ngIf="personalData.controls['telefone'].getError('pattern')">
                 Este campo é obrigatório
               </span>
             </mat-error>
@@ -63,6 +81,9 @@
               <span *ngIf="personalData.controls['endereco'].getError('required')">
                 Este campo é obrigatório
               </span>
+              <span *ngIf="personalData.controls['endereco'].getError('minlength')">
+                Este campo é obrigatório
+              </span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -74,6 +95,9 @@
               formControlName="complemento">
             <mat-error>
               <span *ngIf="personalData.controls['complemento'].getError('required')">
+                Este campo é obrigatório
+              </span>
+              <span *ngIf="personalData.controls['complemento'].getError('minlength')">
                 Este campo é obrigatório
               </span>
             </mat-error>
@@ -88,6 +112,9 @@
               <span *ngIf="personalData.controls['username'].getError('required')">
                 Este campo é obrigatório
               </span>
+              <span *ngIf="personalData.controls['username'].getError('minlength')">
+                  Este campo é obrigatório
+                </span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -100,6 +127,9 @@
               <span *ngIf="personalData.controls['email'].getError('required')">
                 Este campo é obrigatório
               </span>
+              <span *ngIf="personalData.controls['email'].getError('email')">
+                Este campo é obrigatório
+              </span>
             </mat-error>
           </mat-form-field>
         </div>
@@ -107,9 +137,12 @@
         <div class="form-row col">
           <mat-form-field appearance="fill" class="grow">
             <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="000.000.000-00" autocomplete="false" formControlName="senha1">
+            <input type="password" matInput placeholder=" 5 numeros" [pattern]="senha1pattern" autocomplete="false" formControlName="senha">
             <mat-error>
-              <span *ngIf="personalData.controls['senha1'].getError('required')">
+              <span *ngIf="personalData.controls['senha'].getError('required')">
+                Este campo é obrigatório
+              </span>
+              <span *ngIf="personalData.controls['senha'].getError('pattern')">
                 Este campo é obrigatório
               </span>
             </mat-error>
@@ -118,16 +151,19 @@
         <div class="form-row col">
           <mat-form-field appearance="fill" class="grow">
             <mat-label>Confirme:</mat-label>
-            <input type="password" matInput placeholder="Confirme sua senha" autocomplete="off"
-              formControlName="senha2">
+            <input type="password" matInput placeholder="Confirme sua senha" [pattern]="senha2pattern" autocomplete="off"
+              formControlName="senhaconf">
             <mat-error>
-              <span *ngIf="personalData.controls['senha2'].getError('required')">
+              <span *ngIf="personalData.controls['senhaconf'].getError('required')">
                 Este campo é obrigatório
               </span>
-              <span *ngIf="senha2(personalData.controls['senha2'].value ===
-                personalData.controls['senha1'].value)">
+              <span *ngIf="personalData.controls['senhaconf'].getError('pattern')">
                 Este campo é obrigatório
               </span>
+              <span *ngIf="personalData.controls['senhaconf'].getError('comparar')">
+                Este campo é obrigatório
+              </span>
+              
             </mat-error>
           </mat-form-field>
 

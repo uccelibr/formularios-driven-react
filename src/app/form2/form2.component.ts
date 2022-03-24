@@ -20,25 +20,33 @@ export class Form2Component {
   telefone: string = ''
   endereco: string = ''
   complemento:string =''
-  senha1: any = ''
-  senha2: any = ''
+  senha: string = ''
+  senhaconf: string = ''
   
+  //pattern//
+
+  cpfpattern =  '^[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$';
+  senha1pattern = '^[0-9]{5}$';
+  senha2pattern = '^[0-9]{5}$';
+  telefonepattern = '^[0-9]{2}[0-9]{5}-[0-9]{4}$';
+
+///////////////
+
 
     personalData: FormGroup = new FormGroup({
     name: new FormControl ('', [Validators.required,Validators.minLength(5)]),
     lastname: new FormControl ('', [Validators.required, Validators.minLength(5)]),
     cpf: new FormControl ('', [Validators.required]),
-    endereco: new FormControl ('', [Validators.required]),
-    complemento: new FormControl ('', [Validators.required]),
-    user: new FormControl ('', [Validators.required]),
-    email: new FormControl ('', [Validators.required]),
-    senha1: new FormControl ('', [Validators.required]),
-    senha2: new FormControl ('', [Validators.required]),
-    tels: new FormControl ('', [ Validators.required]),
+    endereco: new FormControl ('', [Validators.required, Validators.minLength(5)]),
+    complemento: new FormControl ('', [Validators.required, Validators.minLength(5)]),
+    username: new FormControl ('', [Validators.required, Validators.minLength(5)]),
+    email: new FormControl ('', [Validators.required, Validators.email]),
+    senha: new FormControl ('', [Validators.required]),
+    senhaconf: new FormControl ('', [Validators.required]),
+    telefone: new FormControl ('', [ Validators.required]),
 
   })
 
-  
   constructor( 
     public dialog: MatDialog,
     private formscheck: DialogserviceService
@@ -55,11 +63,9 @@ export class Form2Component {
   Complemento:${this.complemento}
   Username:${this.username}
   Email:${this.email}
-  Senha:${this.senha1}
+  Senha:${this.senha}
   
   `)
-
-
 
     const dialogRef = this.dialog.open(DialoformsComponent, {
       width: '250px',height:'300'
@@ -73,7 +79,7 @@ export class Form2Component {
   }
 
 
-
-
-
+  comparar(senha:string, senhaconf:string): boolean{
+    return! (senha === senhaconf)
+  }
  }

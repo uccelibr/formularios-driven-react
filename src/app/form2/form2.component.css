@@ -2,13 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 mat-card{
     width: fit-content;
     background-color:rgba(54, 115, 168, 0.24);
 }
 #main-form{
-    width: 600px;
+    width: fit-content;
 }
 
 .form-row{
@@ -30,3 +31,7 @@ mat-card:hover {
     box-shadow: 0 30px 35px rgb(4, 1, 7);
    
   }
+
+mat-label{
+    color:black;
+}

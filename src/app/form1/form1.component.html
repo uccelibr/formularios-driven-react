@@ -6,7 +6,7 @@
         <div>
       <mat-card-content>
 
-            <form action="#" id="main-form" (ngSubmit)="showDialog()" #form="ngForm">  
+            <form action="#" id="main-form" (ngSubmit)="startDialog()" #form="ngForm">  
                 <div class="form-row">
                 <mat-form-field appearance="fill" color="primary">
                  <mat-label>Nome</mat-label>
@@ -174,7 +174,7 @@
                 <button mat-raised-button type="submit"
                  color="primary" class="grow"
                   [disabled]="form.invalid"
-                  (click)="showDialog()"
+                  (click)="startDialog()"
                   >   
                   Cadastrar </button>
               </div>
