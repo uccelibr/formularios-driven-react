@@ -1,0 +1,189 @@
+<div class="conteiner">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Cadastre-se !</mat-card-title>
+      </mat-card-header>
+        <div>
+      <mat-card-content>
+
+            <form action="#" id="main-form" (ngSubmit)="showDialog()" #form="ngForm">  
+                <div class="form-row">
+                <mat-form-field appearance="fill" color="primary">
+                 <mat-label>Nome</mat-label>
+                 <input type="text" matInput placeholder="Seu nome:" 
+                 [(ngModel)]="name" name="name" autocomplete="false"
+                required minlength="3" #inputName="ngModel">
+                
+                 <mat-error *ngIf="inputName.invalid">
+                <span *ngIf="inputName.errors?.['minlength']">
+                  Preencha a quantidade mínima de caracteres.
+                </span>
+                <span *ngIf="inputName.errors?.['required']">
+                  Este campo é obrigatório.
+                </span>
+                 </mat-error>
+                </mat-form-field>
+  
+  
+            <mat-form-field appearance="fill" color="primary">
+              <mat-label>Sobrenome</mat-label>
+              <input type="text" matInput placeholder="Seu sobrenome:" [(ngModel)]="lastname" name="lastname"
+                autocomplete="false" required minlength="3" #inputLastname="ngModel">
+              <mat-error>Este campo é obrigatório</mat-error>
+            </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+            <mat-form-field appearance="fill" class="grow">
+              <mat-label>Username</mat-label>
+              <input type="text" matInput placeholder="Seu Username:" [(ngModel)]="username" name="Username"
+                 autocomplete="false"  required minlength="8" username #inputUsername="ngModel">
+              <mat-error *ngIf="inputUsername.invalid">
+                <span *ngIf="inputUsername.errors?.['required']">
+                  Este campo é obrigatorio
+                </span>
+                <span *ngIf="inputUsername.errors?.['minlength']">
+                  Quantidade errada de caracteres, no minimo 8.
+                </span>
+              </mat-error>
+            </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+                  <mat-form-field appearance="fill" class="grow">
+              <mat-label>cpf</mat-label>
+              <input type="text" matInput placeholder="000.000.000-00:" 
+              [(ngModel)]="cpf" name="cpf" autocomplete="false"
+                required cpf maxlength="14"  #inputcpf="ngModel" 
+                pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}">
+              <mat-error *ngIf="inputcpf.invalid">
+               <span *ngIf="inputcpf.errors?.['required']">
+                  Este campo é obrigatorio
+                </span>
+             </mat-error>
+                    </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+              <mat-form-field appearance="fill" class="grow">
+                <mat-label>telefone</mat-label>
+                <input type="text" matInput placeholder=" DDDtelefone:" 
+                [(ngModel)]="telefone" name="telefone"
+                  autocomplete="false" required="pattern"
+                  telefone #inputtelefone="ngModel" 
+    
+                  pattern="[0-9]{2}[0-9]{5}[0-9]{4}">
+                <mat-error *ngIf="inputtelefone.invalid">
+                  <span *ngIf="inputtelefone.errors?.['required']">
+                    Este campo é obrigatorio
+                  </span>
+                  <span *ngIf="inputtelefone.errors?.['minlength']">
+                    Quantidade errada de caracteres.
+                  </span>
+                  
+                </mat-error>
+              </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+              <mat-form-field appearance="fill" class="grow">
+                <mat-label>endereco</mat-label>
+                <input type="text" matInput placeholder="Seu endereco:" [(ngModel)]="endereco" name="endereco"
+                  autocomplete="address-level1"  endereco required #inputendereco="ngModel">
+                <mat-error *ngIf="inputendereco.invalid">
+                  <span *ngIf="inputendereco.errors?.['required']">
+                    Este campo é obrigatorio
+                  </span>
+                </mat-error>
+              </mat-form-field>
+                </div>
+
+                <div class="form-row col">
+              <mat-form-field appearance="fill" class="grow">
+                <mat-label>complemento</mat-label>
+                <input type="text" matInput placeholder="Seu complemento:" [(ngModel)]="complemento" name="complemento"
+                  autocomplete="false" complemento required #inputcomplemento="ngModel">
+              </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+              <mat-form-field appearance="fill" class="grow">
+                <mat-label>E-mail</mat-label>
+                <input type="email" matInput  
+                placeholder="Seu email:" 
+                [(ngModel)]="email" 
+                name="email" 
+                autocomplete="false"
+                  required  
+                  email #inputEmail="ngModel">
+                <mat-error *ngIf="inputEmail.invalid">
+                  <span *ngIf="inputEmail.errors?.['required']">
+                    Este campo é obrigatorio
+                  </span>
+                  <span *ngIf="inputEmail.errors?.['minlength']">
+                    Quantidade errada de caracteres, no minimo 8.
+                  </span>
+                  <span *ngIf="inputEmail.errors?.['email']">
+                    Isso não é um e-mail
+                  </span>
+                </mat-error>
+              </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+              <mat-form-field appearance="fill" class="grow">
+                <mat-label>senha</mat-label>
+                <input type="password" 
+                matInput placeholder=" sua senha deve conter 10 numeros entre 0-9 " 
+                [(ngModel)]="senha1" 
+                name="senha1"
+                  autocomplete="false" 
+                  pattern="[0-9]{10}"
+                   senha1
+                   required="pattern"
+                   #inputsenha1="ngModel">
+                   <mat-error *ngIf="inputsenha2.invalid">
+                    <span *ngIf="inputsenha1.errors?.['required']">
+                    </span>
+                      <span> sua senha conter 10 numeros entre 0 - 9 </span>
+                  </mat-error>
+              </mat-form-field>
+                </div>
+  
+                <div class="form-row col">
+              <mat-form-field appearance="fill" color="primary" class="grow">
+                <mat-label> Confirmação </mat-label>
+                <input type="password" 
+                matInput 
+                required
+                placeholder="confirme sua senha:" 
+                [(ngModel)]="senha2" 
+                name="senha2"
+                autocomplete="false" 
+                pattern={{senha1}}
+                senha2
+              required="pattern"
+                #inputsenha2="ngModel">
+                <mat-error *ngIf="inputsenha2.invalid">
+                  <span *ngIf="inputsenha2.errors?.['required']">
+                    As senhas devem ser iguais</span>
+                </mat-error>
+              </mat-form-field >
+
+              <div class="form-row col">
+                <button mat-raised-button type="submit"
+                 color="primary" class="grow"
+                  [disabled]="form.invalid"
+                  (click)="showDialog()"
+                  >   
+                  Cadastrar </button>
+              </div>
+                </div>
+            </form>
+      </mat-card-content>
+        </div>
+        <mat-card-footer>
+          Template Driven
+        </mat-card-footer>
+    </mat-card>
+</div>
